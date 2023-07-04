@@ -12,7 +12,7 @@ const buttonVariants = cva(
       variant: {
         primary: 'bg-blue-400 text-white shadow-sm hover:bg-blue-500',
         secondary:
-          'bg-white text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50',
+          'bg-white text-sm text-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50',
       },
       size: {
         small: 'px-3 py-1',
