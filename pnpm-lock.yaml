@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@radix-ui/react-slot':
+    specifier: ^1.0.2
+    version: 1.0.2(@types/react@18.2.14)(react@18.2.0)
   '@t3-oss/env-nextjs':
     specifier: ^0.6.0
     version: 0.6.0(typescript@5.1.6)(zod@3.21.4)
@@ -20,6 +23,9 @@ dependencies:
   autoprefixer:
     specifier: 10.4.14
     version: 10.4.14(postcss@8.4.24)
+  class-variance-authority:
+    specifier: ^0.6.1
+    version: 0.6.1
   clsx:
     specifier: ^1.2.1
     version: 1.2.1
@@ -29,6 +35,9 @@ dependencies:
   eslint-config-next:
     specifier: 13.4.8
     version: 13.4.8(eslint@8.44.0)(typescript@5.1.6)
+  lucide-react:
+    specifier: ^0.258.0
+    version: 0.258.0(react@18.2.0)
   next:
     specifier: 13.4.8
     version: 13.4.8(react-dom@18.2.0)(react@18.2.0)
@@ -417,6 +426,35 @@ packages:
     resolution: {integrity: sha512-vx1nxVvN4QeT/cepQce68deh/Turxy5Mr+4L4zClFuK1GlxN3+ivxfuv+ej/gvidWn1cE1uAhW7ALLNlYbRUAw==}
     requiresBuild: true
     dev: true
+
+  /@radix-ui/react-compose-refs@1.0.1(@types/react@18.2.14)(react@18.2.0):
+    resolution: {integrity: sha512-fDSBgd44FKHa1FRMU59qBMPFcl2PZE+2nmqunj+BWFyYYjnhIDWL2ItDs3rrbJDQOtzt5nIebLCQc4QRfz6LJw==}
+    peerDependencies:
+      '@types/react': '*'
+      react: ^16.8 || ^17.0 || ^18.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.22.6
+      '@types/react': 18.2.14
+      react: 18.2.0
+    dev: false
+
+  /@radix-ui/react-slot@1.0.2(@types/react@18.2.14)(react@18.2.0):
+    resolution: {integrity: sha512-YeTpuq4deV+6DusvVUW4ivBgnkHwECUu0BiN43L5UCDFgdhsRUWAghhTF5MbvNTPzmiFOx90asDSUjWuCNapwg==}
+    peerDependencies:
+      '@types/react': '*'
+      react: ^16.8 || ^17.0 || ^18.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.22.6
+      '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.2.14)(react@18.2.0)
+      '@types/react': 18.2.14
+      react: 18.2.0
+    dev: false
 
   /@rushstack/eslint-patch@1.3.2:
     resolution: {integrity: sha512-V+MvGwaHH03hYhY+k6Ef/xKd6RYlc4q8WBx+2ANmipHJcKuktNcI/NgEsJgdSUF6Lw32njT6OnrRsKYCdgHjYw==}
@@ -829,6 +867,12 @@ packages:
       readdirp: 3.6.0
     optionalDependencies:
       fsevents: 2.3.2
+    dev: false
+
+  /class-variance-authority@0.6.1:
+    resolution: {integrity: sha512-eurOEGc7YVx3majOrOb099PNKgO3KnKSApOprXI4BTq6bcfbqbQXPN2u+rPPmIJ2di23bMwhk0SxCCthBmszEQ==}
+    dependencies:
+      clsx: 1.2.1
     dev: false
 
   /client-only@0.0.1:
@@ -1984,6 +2028,14 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       yallist: 4.0.0
+    dev: false
+
+  /lucide-react@0.258.0(react@18.2.0):
+    resolution: {integrity: sha512-3evnpKadBrjLr2HHJ66eDZ1y0vPS6pm8NiNDaLqhddUUyJGnA+lfDPZfbVkuAFq7Xaa1TEy7Sg17sM7mHpMKrA==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /merge-stream@2.0.0:
