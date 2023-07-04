@@ -1,6 +1,8 @@
-import { LucideProps } from 'lucide-react'
+import { HomeIcon, LucideProps, UserCircle2 } from 'lucide-react'
 
 export const Icons = {
+  Home: HomeIcon,
+  Profile: UserCircle2,
   microsoft: ({ size, ...props }: LucideProps) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
