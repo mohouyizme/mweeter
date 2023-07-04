@@ -13,6 +13,11 @@ const links = [
     label: 'Profile',
     Icon: Icons.Profile,
   },
+  {
+    href: '/settings',
+    label: 'Settings',
+    Icon: Icons.Settings,
+  },
 ]
 
 export default function SideNavigation() {

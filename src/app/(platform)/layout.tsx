@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import LogOutButton from '@/components/LogOutButton'
 import SideNavigation from '@/components/SideNavigation'
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -17,7 +18,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             className="h-5 w-auto"
           />
         </Link>
-        <SideNavigation />
+        <div className="">
+          <SideNavigation />
+          <hr className="my-4" />
+          <LogOutButton />
+        </div>
       </aside>
       <main className="flex-1">{children}</main>
       <aside className="sticky top-8 hidden w-52 shrink-0 xl:block">
