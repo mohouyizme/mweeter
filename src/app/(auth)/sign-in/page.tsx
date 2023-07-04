@@ -13,6 +13,7 @@ export default function LoginPage() {
           width={200}
           height={24}
           priority
+          className="h-6 w-auto"
         />
         <div className="flex flex-wrap justify-center gap-4">
           <Button variant="secondary" size="large">
