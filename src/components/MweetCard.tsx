@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export default function MweetCard() {
   return (
-    <div className="flex gap-4 rounded-2xl text-gray-500">
+    <div className="flex gap-4 text-gray-500">
       <div className="">
         <Image
           src="/avatar.jpg"
@@ -20,7 +20,7 @@ export default function MweetCard() {
           <span>•</span>
           <span>4h</span>
         </Link>
-        <p className="mt-2 text-gray-800">
+        <p className="mt-2 text-lg text-gray-800">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus
           fugiat dolores voluptate ea illo eius sequi voluptatum minus. Quam,
           repudiandae magni cumque numquam architecto esse autem temporibus illo
