@@ -1,10 +1,12 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { withPageAuthRequired } from '@auth0/nextjs-auth0'
+
 import MweetCard from '@/components/MweetCard'
 import { Button } from '@/components/ui/Button'
 
-export default function ProfilePage() {
+export default withPageAuthRequired(async function ProfilePage() {
   return (
     <div className="overflow-hidden rounded-3xl border bg-white shadow-sm">
       <div className="h-32 bg-gray-100" />
@@ -39,4 +41,4 @@ export default function ProfilePage() {
       </div>
     </div>
   )
-}
+})
