@@ -1,9 +1,7 @@
-import { withPageAuthRequired } from '@auth0/nextjs-auth0'
-
 import MweetCard from '@/components/MweetCard'
 import SendMweet from '@/components/SendMweet'
 
-export default withPageAuthRequired(async function HomePage() {
+export default function HomePage() {
   return (
     <div className="space-y-8">
       <SendMweet />
@@ -17,4 +15,4 @@ export default withPageAuthRequired(async function HomePage() {
       </div>
     </div>
   )
-})
+}
