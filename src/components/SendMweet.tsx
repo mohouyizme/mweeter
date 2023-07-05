@@ -11,13 +11,13 @@ import useAutosizeTextArea from '@/hooks/useAutosizeTextArea'
 import { cn } from '@/lib/utils'
 
 const mweetSchema = z.object({
-  mweet: z.string().min(1).max(255),
+  mweet: z.string().min(1).max(280),
 })
 
 type MweetSchema = z.infer<typeof mweetSchema>
 
 export default function SendMweet() {
-  const maxLength = 255
+  const maxLength = 280
 
   const textAreaRef = useRef<HTMLTextAreaElement | null>(null)
   const {
