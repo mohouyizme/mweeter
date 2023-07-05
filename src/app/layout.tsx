@@ -9,7 +9,7 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
 export const metadata = {
-  title: 'Mweeter',
+  title: 'mweeter',
   description: 'A Twitter clone built with Next.js',
 }
 
