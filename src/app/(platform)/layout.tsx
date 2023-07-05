@@ -26,7 +26,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </aside>
       <main className="flex-1">{children}</main>
       <aside className="sticky top-8 hidden w-52 shrink-0 xl:block">
-        Right side
+        <div className="space-y-4">
+          <h2 className="text-xl font-bold">People to follow</h2>
+        </div>
       </aside>
     </div>
   )
