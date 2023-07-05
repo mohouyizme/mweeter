@@ -2,6 +2,7 @@
 
 import { useRef } from 'react'
 
+import { useAuth } from '@clerk/nextjs'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -9,6 +10,8 @@ import { z } from 'zod'
 import { Button } from '@/components/ui/Button'
 import useAutosizeTextArea from '@/hooks/useAutosizeTextArea'
 import { cn } from '@/lib/utils'
+
+import { Icons } from './Icons'
 
 const mweetSchema = z.object({
   mweet: z.string().min(1).max(280),
@@ -20,11 +23,13 @@ export default function SendMweet() {
   const maxLength = 280
 
   const textAreaRef = useRef<HTMLTextAreaElement | null>(null)
+  const { userId } = useAuth()
   const {
     register,
     handleSubmit,
     watch,
-    formState: { isValid },
+    resetField,
+    formState: { isValid, isSubmitting },
   } = useForm<MweetSchema>({
     resolver: zodResolver(mweetSchema),
   })
@@ -34,7 +39,16 @@ export default function SendMweet() {
 
   useAutosizeTextArea(textAreaRef.current, mweet)
 
-  const onSubmit: SubmitHandler<MweetSchema> = (data) => console.log(data)
+  const onSubmit: SubmitHandler<MweetSchema> = async (data) => {
+    await fetch('/api/mweets', {
+      method: 'POST',
+      body: JSON.stringify({
+        ...data,
+        userId,
+      }),
+    })
+    resetField('mweet')
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -55,7 +69,10 @@ export default function SendMweet() {
           disabled={!isValid}
           className="absolute bottom-6 left-6"
         >
-          Send mweet
+          {isSubmitting ? (
+            <Icons.Loader size={18} className="mr-2 animate-spin" />
+          ) : null}
+          {isSubmitting ? 'Submitting' : 'Send mweet'}
         </Button>
         <span
           className={cn(
