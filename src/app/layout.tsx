@@ -1,5 +1,7 @@
 import { Inter } from 'next/font/google'
 
+import { UserProvider } from '@auth0/nextjs-auth0/client'
+
 import { cn } from '@/lib/utils'
 
 import './globals.css'
@@ -18,7 +20,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={cn(inter.variable, 'bg-gray-50 text-gray-800')}>
-      <body>{children}</body>
+      <UserProvider>
+        <body>{children}</body>
+      </UserProvider>
     </html>
   )
 }
