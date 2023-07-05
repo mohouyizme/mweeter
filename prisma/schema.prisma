@@ -7,3 +7,26 @@ datasource db {
   url          = env("DATABASE_URL")
   relationMode = "prisma"
 }
+
+model User {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  clerkId   String   @unique
+  firstName String
+  lastName  String
+  username  String   @unique
+  imageUrl  String
+  mweets    Mweet[]
+}
+
+model Mweet {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  text      String   @db.VarChar(280)
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@index([userId], name: "userId")
+}
