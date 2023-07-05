@@ -1,6 +1,6 @@
 import { Inter } from 'next/font/google'
 
-import { UserProvider } from '@auth0/nextjs-auth0/client'
+import { ClerkProvider } from '@clerk/nextjs'
 
 import { cn } from '@/lib/utils'
 
@@ -20,9 +20,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={cn(inter.variable, 'bg-gray-50 text-gray-800')}>
-      <UserProvider>
+      <ClerkProvider>
         <body>{children}</body>
-      </UserProvider>
+      </ClerkProvider>
     </html>
   )
 }
