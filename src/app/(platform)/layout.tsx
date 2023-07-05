@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import LogOutButton from '@/components/LogOutButton'
+import PeopleToFollow from '@/components/PeopleToFollow'
 import SideNavigation from '@/components/SideNavigation'
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -25,9 +26,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </div>
       </aside>
       <main className="flex-1">{children}</main>
-      <aside className="sticky top-8 hidden w-52 shrink-0 xl:block">
-        <div className="space-y-4">
+      <aside className="sticky top-8 hidden w-64 shrink-0 xl:block">
+        <div className="space-y-8">
           <h2 className="text-xl font-bold">People to follow</h2>
+          <PeopleToFollow />
         </div>
       </aside>
     </div>
