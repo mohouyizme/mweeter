@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import dayjs from '@/lib/dayjs'
 import { Mweet } from '@/types/mweet'
 
 interface MweetCardProps {
@@ -9,7 +10,7 @@ interface MweetCardProps {
 
 export default function MweetCard({ mweet }: MweetCardProps) {
   return (
-    <div className="flex gap-4 border-b px-6 pb-8 pt-6 text-gray-500 last-of-type:border-none">
+    <div className="flex gap-4 border-b p-6 text-gray-500 last-of-type:border-none">
       <Image
         src={mweet.user.imageUrl}
         alt="avatar"
@@ -24,7 +25,7 @@ export default function MweetCard({ mweet }: MweetCardProps) {
           </span>
           <span>{mweet.user.username}</span>
           <span>•</span>
-          <span>4h</span>
+          <span>{dayjs(mweet.createdAt).fromNow(true)}</span>
         </Link>
         <p className="mt-1">{mweet.text}</p>
       </div>
