@@ -55,13 +55,13 @@ export default function ProfilePage({ params }: ProfilePageParams) {
         </h2>
         <p className="text-gray-500">@{data?.user.username}</p>
         <div className="mt-2 flex gap-2 text-sm text-gray-500">
-          <Link href="/following">
+          <Link href={`/profile/${params.username}/following`}>
             <span className="font-bold text-gray-800">
               {data?.user._count.following}
             </span>{' '}
             Following
           </Link>
-          <Link href="/followers">
+          <Link href={`/profile/${params.username}/followers`}>
             <span className="font-bold text-gray-800">
               {data?.user._count.followers}
             </span>{' '}

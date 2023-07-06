@@ -47,6 +47,7 @@ export default function FollowButton({ username }: FollowButtonProps) {
         rounded
         className="absolute right-6 top-10"
       >
+        <Icons.Loader size={14} className="mr-1 animate-spin" />
         Loading
       </Button>
     )

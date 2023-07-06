@@ -10,5 +10,7 @@ export type User = {
     followers: number
     following: number
   }
+  followers: { follower: User }[]
+  following: { following: User }[]
   mweets: Mweet[]
 }

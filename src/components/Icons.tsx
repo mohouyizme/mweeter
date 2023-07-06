@@ -1,6 +1,7 @@
 import {
+  ArrowLeftIcon,
   HomeIcon,
-  Loader2,
+  Loader2Icon,
   LogOutIcon,
   LucideProps,
   Settings2Icon,
@@ -12,7 +13,8 @@ export const Icons = {
   Profile: UserCircle2Icon,
   LogOut: LogOutIcon,
   Settings: Settings2Icon,
-  Loader: Loader2,
+  Loader: Loader2Icon,
+  ArrowLeft: ArrowLeftIcon,
   microsoft: ({ size, ...props }: LucideProps) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
