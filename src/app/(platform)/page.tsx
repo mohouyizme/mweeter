@@ -11,7 +11,12 @@ import { Mweet } from '@/types/mweet'
 export default function HomePage() {
   const { data, error, isLoading } = useSWR('/api/mweets', fetcher)
 
-  console.log(data, error, isLoading)
+  if (error)
+    return (
+      <p className="mt-8 text-center text-gray-500">
+        Something went wrong while fetching mweets. Please try again.
+      </p>
+    )
 
   return (
     <div className="space-y-8">
