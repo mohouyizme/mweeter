@@ -3,16 +3,18 @@ import Link from 'next/link'
 
 import dayjs from '@/lib/dayjs'
 import { Mweet } from '@/types/mweet'
+import { User } from '@/types/user'
 
 interface MweetCardProps {
   mweet: Mweet
+  user: User
 }
 
-export default function MweetCard({ mweet }: MweetCardProps) {
+export default function MweetCard({ mweet, user }: MweetCardProps) {
   return (
     <div className="flex gap-4 border-b p-6 text-gray-500 last-of-type:border-none">
       <Image
-        src={mweet.user.imageUrl}
+        src={user.imageUrl}
         alt="avatar"
         width={48}
         height={48}
@@ -20,13 +22,13 @@ export default function MweetCard({ mweet }: MweetCardProps) {
       />
       <div className="flex-1">
         <Link
-          href={`/profile/${mweet.user.username}`}
+          href={`/profile/${user.username}`}
           className="inline-block items-center space-x-2"
         >
           <span className="font-bold text-gray-800">
-            {mweet.user.firstName} {mweet.user.lastName}
+            {user.firstName} {user.lastName}
           </span>
-          <span>{mweet.user.username}</span>
+          <span>{user.username}</span>
           <span>•</span>
           <span>{dayjs(mweet.createdAt).fromNow(true)}</span>
         </Link>

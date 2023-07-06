@@ -9,7 +9,10 @@ import { fetcher } from '@/lib/fetcher'
 import { Mweet } from '@/types/mweet'
 
 export default function HomePage() {
-  const { data, error, isLoading } = useSWR('/api/mweets', fetcher)
+  const { data, error, isLoading } = useSWR<{ mweets: Mweet[] }>(
+    '/api/mweets',
+    fetcher
+  )
 
   if (error)
     return (
@@ -29,8 +32,8 @@ export default function HomePage() {
           </div>
         ) : (
           <div className="rounded-3xl border bg-white shadow-sm">
-            {data.mweets.map((mweet: Mweet) => (
-              <MweetCard key={mweet.id} mweet={mweet} />
+            {data?.mweets.map((mweet) => (
+              <MweetCard key={mweet.id} mweet={mweet} user={mweet.user} />
             ))}
           </div>
         )}
