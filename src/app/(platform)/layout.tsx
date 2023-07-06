@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import LogOutButton from '@/components/LogOutButton'
+import MobileNavbar from '@/components/MobileNavbar'
 import PeopleToFollow from '@/components/PeopleToFollow'
 import SideNavigation from '@/components/SideNavigation'
 
@@ -25,7 +26,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <LogOutButton />
         </div>
       </aside>
-      <main className="flex-1">{children}</main>
+      <main className="flex-1">
+        <div className="mb-8 lg:hidden">
+          <MobileNavbar />
+        </div>
+        {children}
+      </main>
       <aside className="sticky top-8 hidden w-80 shrink-0 xl:block">
         <div className="space-y-8">
           <h2 className="text-xl font-bold">People to follow</h2>

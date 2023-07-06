@@ -5,6 +5,7 @@ import './src/env/server.mjs'
 const config = {
   images: {
     domains: [
+      'img.clerk.com',
       'images.clerk.dev',
       'www.gravatar.com',
       'lh3.googleusercontent.com',
