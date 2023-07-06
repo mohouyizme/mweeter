@@ -1,6 +1,27 @@
+import { NextResponse } from 'next/server'
+
 import { auth } from '@clerk/nextjs'
 
 import { prisma } from '@/lib/prisma'
+
+export async function GET(request: Request) {
+  try {
+    const mweets = await prisma.mweet.findMany({
+      include: {
+        user: true,
+      },
+      orderBy: {
+        createdAt: 'desc',
+      },
+    })
+
+    return NextResponse.json({ mweets })
+  } catch (error) {
+    return new Response('An error occurred while fetching the mweets.', {
+      status: 500,
+    })
+  }
+}
 
 export async function POST(request: Request) {
   const { userId } = await auth()

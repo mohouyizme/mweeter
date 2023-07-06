@@ -1,17 +1,34 @@
+'use client'
+
+import useSWR from 'swr'
+
+import { Icons } from '@/components/Icons'
 import MweetCard from '@/components/MweetCard'
 import SendMweet from '@/components/SendMweet'
+import { fetcher } from '@/lib/fetcher'
+import { Mweet } from '@/types/mweet'
 
 export default function HomePage() {
+  const { data, error, isLoading } = useSWR('/api/mweets', fetcher)
+
+  console.log(data, error, isLoading)
+
   return (
     <div className="space-y-8">
       <SendMweet />
       <div className="space-y-4">
         <h2 className="text-xl font-bold">Latest mweets</h2>
-        <div className="rounded-3xl border bg-white shadow-sm">
-          <MweetCard />
-          <MweetCard />
-          <MweetCard />
-        </div>
+        {isLoading ? (
+          <div className="mt-8 flex justify-center">
+            <Icons.Loader size={32} className="animate-spin text-blue-400" />
+          </div>
+        ) : (
+          <div className="rounded-3xl border bg-white shadow-sm">
+            {data.mweets.map((mweet: Mweet) => (
+              <MweetCard key={mweet.id} mweet={mweet} />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   )

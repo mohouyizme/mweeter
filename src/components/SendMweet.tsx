@@ -1,10 +1,9 @@
-'use client'
-
 import { useRef } from 'react'
 
 import { useAuth } from '@clerk/nextjs'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { useSWRConfig } from 'swr'
 import { z } from 'zod'
 
 import { Button } from '@/components/ui/Button'
@@ -24,6 +23,7 @@ export default function SendMweet() {
 
   const textAreaRef = useRef<HTMLTextAreaElement | null>(null)
   const { userId } = useAuth()
+  const { mutate } = useSWRConfig()
   const {
     register,
     handleSubmit,
@@ -48,6 +48,7 @@ export default function SendMweet() {
       }),
     })
     resetField('mweet')
+    mutate('/api/mweets')
   }
 
   return (
