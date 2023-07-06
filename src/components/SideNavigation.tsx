@@ -14,8 +14,8 @@ const links = [
     Icon: Icons.Profile,
   },
   {
-    href: '/settings',
-    label: 'Settings',
+    href: '/edit-profile',
+    label: 'Edit Profile',
     Icon: Icons.Settings,
   },
 ]
