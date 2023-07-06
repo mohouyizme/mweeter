@@ -56,10 +56,16 @@ export default function ProfilePage({ params }: ProfilePageParams) {
         <p className="text-gray-500">@{data?.user.username}</p>
         <div className="mt-2 flex gap-2 text-sm text-gray-500">
           <Link href="/following">
-            <span className="font-bold text-gray-800">199</span> Following
+            <span className="font-bold text-gray-800">
+              {data?.user._count.following}
+            </span>{' '}
+            Following
           </Link>
           <Link href="/followers">
-            <span className="font-bold text-gray-800">32</span> Followers
+            <span className="font-bold text-gray-800">
+              {data?.user._count.followers}
+            </span>{' '}
+            Followers
           </Link>
         </div>
         <Button variant="secondary" rounded className="absolute right-6 top-10">
