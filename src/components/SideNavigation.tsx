@@ -23,7 +23,7 @@ const links = [
 export default function SideNavigation() {
   return (
     <nav>
-      <ul className="">
+      <ul>
         {links.map(({ href, label, Icon }) => (
           <li key={label}>
             <Link
