@@ -36,8 +36,6 @@ export async function GET(
     const isFollowedBy = (targetUser?.following?.length ?? 0) > 0
     const isFollowing = (targetUser?.followers?.length ?? 0) > 0
 
-    console.log(isFollowedBy, isFollowing)
-
     return NextResponse.json({
       status: {
         isFollowing,
