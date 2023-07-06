@@ -22,7 +22,14 @@ export async function GET(
             following: true,
           },
         },
-        mweets: with_mweets === 'true' ? true : false,
+        mweets:
+          with_mweets === 'true'
+            ? {
+                orderBy: {
+                  createdAt: 'desc',
+                },
+              }
+            : false,
       },
     })
 
