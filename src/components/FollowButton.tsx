@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import Link from 'next/link'
+
 import useSWR, { mutate } from 'swr'
 
 import { fetcher } from '@/lib/fetcher'
@@ -69,8 +71,13 @@ export default function FollowButton({ username }: FollowButtonProps) {
 
   if (data?.status.isMyself)
     return (
-      <Button variant="secondary" rounded className="absolute right-6 top-10">
-        Edit Profile
+      <Button
+        variant="secondary"
+        rounded
+        className="absolute right-6 top-10"
+        asChild
+      >
+        <Link href="/edit-profile">Edit Profile</Link>
       </Button>
     )
 
