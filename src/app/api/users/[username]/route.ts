@@ -26,8 +26,6 @@ export async function GET(
       },
     })
 
-    console.log(user)
-
     if (!user) return new Response('User not found', { status: 404 })
 
     return NextResponse.json({ user })
