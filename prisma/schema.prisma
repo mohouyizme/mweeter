@@ -17,6 +17,8 @@ model User {
   username  String   @unique
   imageUrl  String
   mweets    Mweet[]
+  followers Follow[] @relation("following")
+  following Follow[] @relation("follower")
 }
 
 model Mweet {
@@ -28,4 +30,16 @@ model Mweet {
   user      User     @relation(fields: [userId], references: [id])
 
   @@index([userId], name: "userId")
+}
+
+model Follow {
+  createdAt   DateTime @default(now())
+  follower    User     @relation("follower", fields: [followerId], references: [id])
+  followerId  String
+  following   User     @relation("following", fields: [followingId], references: [id])
+  followingId String
+
+  @@id([followerId, followingId])
+  @@index([followerId], name: "followerId")
+  @@index([followingId], name: "followingId")
 }
