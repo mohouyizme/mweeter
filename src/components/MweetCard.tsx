@@ -30,7 +30,7 @@ export default function MweetCard({ mweet, user }: MweetCardProps) {
           <span className="font-bold text-gray-800">
             {user.firstName} {user.lastName}
           </span>
-          <span>{user.username}</span>
+          <span>@{user.username}</span>
           <span>•</span>
           <span>{dayjs(mweet.createdAt).fromNow(true)}</span>
         </Link>
