@@ -72,7 +72,12 @@ export default function ProfilePage({ params }: ProfilePageParams) {
           <FollowButton username={params.username} />
         </div>
       </div>
-      <div className="">
+      <div>
+        {data?.user.mweets.length === 0 ? (
+          <p className="py-6 text-center text-gray-500">
+            @{data?.user.username} hasn't mweeted yet.
+          </p>
+        ) : null}
         {data?.user.mweets.map((mweet) => (
           <MweetCard key={mweet.id} mweet={mweet} user={data?.user} />
         ))}

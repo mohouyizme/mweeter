@@ -33,6 +33,9 @@ export default function PeopleToFollow() {
 
   return (
     <div>
+      {data?.users.length === 0 ? (
+        <p className="text-gray-500">There are no users to follow.</p>
+      ) : null}
       {data?.users.map((user) => (
         <div
           key={user.id}
