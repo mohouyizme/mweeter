@@ -5,9 +5,9 @@ import Link from 'next/link'
 
 import useSWR from 'swr'
 
+import FollowButton from '@/components/FollowButton'
 import { Icons } from '@/components/Icons'
 import MweetCard from '@/components/MweetCard'
-import { Button } from '@/components/ui/Button'
 import { fetcher } from '@/lib/fetcher'
 import { User } from '@/types/user'
 
@@ -68,9 +68,7 @@ export default function ProfilePage({ params }: ProfilePageParams) {
             Followers
           </Link>
         </div>
-        <Button variant="secondary" rounded className="absolute right-6 top-10">
-          Following
-        </Button>
+        <FollowButton username={params.username} />
       </div>
       <div className="">
         {data?.user.mweets.map((mweet) => (
