@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 
 import useSWR from 'swr'
@@ -53,10 +54,12 @@ export default function FollowersPage({ params }: FollowersPageProps) {
                 key={follower.username}
                 className="flex items-center gap-4 border-b p-6 last-of-type:border-none"
               >
-                <img
+                <Image
                   src={follower.imageUrl}
                   alt={follower.username}
-                  className="h-12 w-12 rounded-full"
+                  width={48}
+                  height={48}
+                  className="rounded-full"
                 />
                 <div>
                   <p className="font-bold">
