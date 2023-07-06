@@ -68,7 +68,9 @@ export default function ProfilePage({ params }: ProfilePageParams) {
             Followers
           </Link>
         </div>
-        <FollowButton username={params.username} />
+        <div className="absolute right-6 top-10">
+          <FollowButton username={params.username} />
+        </div>
       </div>
       <div className="">
         {data?.user.mweets.map((mweet) => (

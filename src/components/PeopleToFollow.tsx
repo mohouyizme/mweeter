@@ -1,32 +1,59 @@
+'use client'
+
 import Image from 'next/image'
+import Link from 'next/link'
 
-import { Button } from '@/components/ui/Button'
+import useSWR from 'swr'
 
-const array = [1, 2, 3, 4, 5]
+import { fetcher } from '@/lib/fetcher'
+import { User } from '@/types/user'
+
+import FollowButton from './FollowButton'
+import { Icons } from './Icons'
 
 export default function PeopleToFollow() {
+  const { data, isLoading, error } = useSWR<{ users: User[] }>(
+    '/api/users/people-to-follow',
+    fetcher
+  )
+
+  if (isLoading)
+    return (
+      <div className="mt-8 flex justify-center">
+        <Icons.Loader size={32} className="animate-spin text-blue-400" />
+      </div>
+    )
+
+  if (error)
+    return (
+      <p className="mt-8 text-center text-gray-500">
+        Something went wrong while fetching mweets. Please try again.
+      </p>
+    )
+
   return (
-    <div className="space-y-6">
-      {array.map((item) => (
-        <div key={item} className="flex items-center justify-between">
-          <div className="flex gap-3">
-            <div className="">
-              <Image
-                src="/avatar.jpg"
-                alt="avatar"
-                width={48}
-                height={48}
-                className="h-10 w-10 rounded-full bg-gray-200"
-              />
-            </div>
+    <div>
+      {data?.users.map((user) => (
+        <div
+          key={user.id}
+          className="-mx-4 flex items-center justify-between rounded-3xl p-4 transition duration-300 hover:bg-gray-200"
+        >
+          <Link href={`/profile/${user.username}`} className="flex gap-3">
+            <Image
+              src={user.imageUrl}
+              alt="avatar"
+              width={48}
+              height={48}
+              className="h-10 w-10 rounded-full bg-gray-200"
+            />
             <div className="flex-1">
-              <span className="block font-bold">Jhon Doe</span>
-              <span className="block text-sm text-gray-500">@jhondoe</span>
+              <p className="font-bold">
+                {user.firstName} {user.lastName}
+              </p>
+              <p className="text-sm text-gray-500">@{user.username}</p>
             </div>
-          </div>
-          <Button variant="secondary" size="small" rounded>
-            Follow
-          </Button>
+          </Link>
+          <FollowButton username={user.username} />
         </div>
       ))}
     </div>

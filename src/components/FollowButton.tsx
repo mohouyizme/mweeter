@@ -43,12 +43,7 @@ export default function FollowButton({ username }: FollowButtonProps) {
 
   if (isLoading)
     return (
-      <Button
-        variant="secondary"
-        disabled
-        rounded
-        className="absolute right-6 top-10"
-      >
+      <Button variant="secondary" disabled rounded>
         <Icons.Loader size={14} className="mr-1 animate-spin" />
         Loading
       </Button>
@@ -56,12 +51,7 @@ export default function FollowButton({ username }: FollowButtonProps) {
 
   if (data?.status.isFollowing)
     return (
-      <Button
-        onClick={() => unfollowUser()}
-        variant="secondary"
-        rounded
-        className="absolute right-6 top-10"
-      >
+      <Button onClick={() => unfollowUser()} variant="secondary" rounded>
         {isSubmitting ? (
           <Icons.Loader size={14} className="mr-1 animate-spin" />
         ) : null}
@@ -71,23 +61,13 @@ export default function FollowButton({ username }: FollowButtonProps) {
 
   if (data?.status.isMyself)
     return (
-      <Button
-        variant="secondary"
-        rounded
-        className="absolute right-6 top-10"
-        asChild
-      >
+      <Button variant="secondary" rounded asChild>
         <Link href="/edit-profile">Edit Profile</Link>
       </Button>
     )
 
   return (
-    <Button
-      onClick={() => followUser()}
-      variant="primary"
-      rounded
-      className="absolute right-6 top-10"
-    >
+    <Button onClick={() => followUser()} variant="primary" rounded>
       {isSubmitting ? (
         <Icons.Loader size={14} className="mr-1 animate-spin" />
       ) : null}
