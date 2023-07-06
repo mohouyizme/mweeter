@@ -43,16 +43,17 @@ export default function FollowingPage({ params }: FollowingPageProps) {
             <Icons.Loader size={32} className="animate-spin text-blue-400" />
           </div>
         ) : (
-          <div className="rounded-3xl border bg-white">
+          <div className="overflow-hidden rounded-3xl border bg-white">
             {data?.user.following.length === 0 ? (
               <p className="p-6 text-center text-gray-500">
                 @{params.username} is not following anyone.
               </p>
             ) : null}
             {data?.user.following.map(({ following }) => (
-              <div
+              <Link
+                href={`/profile/${following.username}`}
                 key={following.username}
-                className="flex items-center gap-4 border-b p-6 last-of-type:border-none"
+                className="flex items-center gap-4 border-b p-6 transition duration-300 last-of-type:border-none hover:bg-gray-100"
               >
                 <Image
                   src={following.imageUrl}
@@ -67,7 +68,7 @@ export default function FollowingPage({ params }: FollowingPageProps) {
                   </p>
                   <p className="text-gray-500">@{following.username}</p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         )}

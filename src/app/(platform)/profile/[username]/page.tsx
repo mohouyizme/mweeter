@@ -75,7 +75,7 @@ export default function ProfilePage({ params }: ProfilePageParams) {
       <div>
         {data?.user.mweets.length === 0 ? (
           <p className="py-6 text-center text-gray-500">
-            @{data?.user.username} hasn't mweeted yet.
+            @{data?.user.username} hasn&apos;t mweeted yet.
           </p>
         ) : null}
         {data?.user.mweets.map((mweet) => (

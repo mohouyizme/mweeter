@@ -43,16 +43,17 @@ export default function FollowersPage({ params }: FollowersPageProps) {
             <Icons.Loader size={32} className="animate-spin text-blue-400" />
           </div>
         ) : (
-          <div className="rounded-3xl border bg-white">
+          <div className="overflow-hidden rounded-3xl border bg-white">
             {data?.user.followers.length === 0 ? (
               <p className="p-6 text-center text-gray-500">
                 @{params.username} is not followed by anyone.
               </p>
             ) : null}
             {data?.user.followers.map(({ follower }) => (
-              <div
+              <Link
+                href={`/profile/${follower.username}`}
                 key={follower.username}
-                className="flex items-center gap-4 border-b p-6 last-of-type:border-none"
+                className="flex items-center gap-4 border-b p-6 transition duration-300 last-of-type:border-none hover:bg-gray-100"
               >
                 <Image
                   src={follower.imageUrl}
@@ -67,7 +68,7 @@ export default function FollowersPage({ params }: FollowersPageProps) {
                   </p>
                   <p className="text-gray-500">@{follower.username}</p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         )}
