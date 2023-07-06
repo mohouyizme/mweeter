@@ -19,7 +19,10 @@ export default function MweetCard({ mweet }: MweetCardProps) {
         className="h-10 w-10 rounded-full bg-gray-200"
       />
       <div className="flex-1">
-        <Link href="/profile/1" className="inline-block items-center space-x-2">
+        <Link
+          href={`/profile/${mweet.user.username}`}
+          className="inline-block items-center space-x-2"
+        >
           <span className="font-bold text-gray-800">
             {mweet.user.firstName} {mweet.user.lastName}
           </span>
