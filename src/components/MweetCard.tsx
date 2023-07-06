@@ -12,14 +12,16 @@ interface MweetCardProps {
 
 export default function MweetCard({ mweet, user }: MweetCardProps) {
   return (
-    <div className="flex gap-4 border-b p-6 text-gray-500 last-of-type:border-none">
-      <Image
-        src={user.imageUrl}
-        alt="avatar"
-        width={48}
-        height={48}
-        className="h-10 w-10 rounded-full bg-gray-200"
-      />
+    <div className="flex border-b p-6 text-gray-500 last-of-type:border-none">
+      <Link href={`/profile/${user.username}`} className="pr-4">
+        <Image
+          src={user.imageUrl}
+          alt="avatar"
+          width={48}
+          height={48}
+          className="h-10 w-10 rounded-full bg-gray-200"
+        />
+      </Link>
       <div className="flex-1">
         <Link
           href={`/profile/${user.username}`}
