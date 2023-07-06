@@ -16,9 +16,17 @@ export async function GET(
         username,
       },
       include: {
+        _count: {
+          select: {
+            followers: true,
+            following: true,
+          },
+        },
         mweets: with_mweets === 'true' ? true : false,
       },
     })
+
+    console.log(user)
 
     if (!user) return new Response('User not found', { status: 404 })
 
